@@ -113,9 +113,15 @@ importers:
       input-otp:
         specifier: ^1.2.4
         version: 1.4.2(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      jiti:
+        specifier: ^2.7.0
+        version: 2.7.0
       lucide-react:
         specifier: ^0.462.0
         version: 0.462.0(react@19.2.3)
+      nitro:
+        specifier: ^3.0.261029-rc
+        version: 3.0.261029-rc
       next-themes:
         specifier: ^0.3.0
         version: 0.3.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -2602,6 +2608,52 @@ packages:
   zod@3.25.76:
     resolution: {integrity: sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==}
 
+  jiti@2.7.0:
+    resolution: {integrity: sha512-AC/7JofJvZGrrneWNaEnJeOLUx+JlGt7tNa0wZiRPT4MY1wmfKjt2+6O2p2uz2+skll8OZZmJMNqeke7kKbNgQ==}
+    hasBin: true
+
+  nitro@3.0.261029-rc:
+    resolution: {integrity: sha512-BQvzAV0HgcsJCkDqZAbGYlGNi9ALJznhsihugYAIi+8IcItz320FNaxbAJvn/pMNxGOYo2MGs10mTU9tcnB9jQ==}
+    engines: {node: '>=22.22.0'}
+    hasBin: true
+    dependencies:
+      crossws: 0.4.17
+      env-runner: 0.3.11
+      h3: 2.0.8
+      ocache: 0.3.1
+      rou3: 1.0.0
+      srvx: 1.0.8
+
+  crossws@0.4.17:
+    resolution: {integrity: sha512-YG2kyfafNXKmu7e6k64yrj6whrw7m5sBIsOSXOlJ/72X3TQWRQuw8DhvXFDcBk8HF77PnTSygnm7xpYCTnFpow==}
+
+  env-runner@0.3.11:
+    resolution: {integrity: sha512-jKG29hxqGrL9ktunIwmt9aHbP3n995DGUY1KyXS7iGYFoD/yDdpc2CjJt6remFI3x2H1JOmBBMo0KXxjEQ2G6g==}
+    hasBin: true
+    dependencies:
+      crossws: 0.4.17
+      srvx: 1.0.8
+
+  h3@2.0.8:
+    resolution: {integrity: sha512-ENuKlF9kC6E6PrvY1PUyE0qkrnnPTIt2/v48uyEEfTVfgoiqBCE0uwwf++2XrWwT1gxjQBDLQ8PAsmZVniKvTw==}
+    engines: {node: '>=20.19.0'}
+    hasBin: true
+    dependencies:
+      rou3: 1.0.0
+      srvx: 1.0.8
+
+  ocache@0.3.1:
+    resolution: {integrity: sha512-qeBrhQ0ly6tgXsakgNwLx6diRUppJZIcV5OjVGa5yp9HzztutkaGDDXJqVMo1fKWz5fNDtTp3iPU2fuhHf0+Lg==}
+
+  rou3@1.0.0:
+    resolution: {integrity: sha512-ySeaQkSrua+ut9g+65I7FHqOFBaY8tV0FmccXItoq0q21se32Q3u4YiW7/RqXSosWgYJaaKwRHXy3BST9PeCNQ==}
+    engines: {node: '>=20.19.0'}
+
+  srvx@1.0.8:
+    resolution: {integrity: sha512-ngFS/J6St4PJfHRHGjr78xkPPtbyXtdMOLNE4x/XZunEK3OhV7aGUWMHf9WTUEy6wm1U0W4okkd82ZFFWRVQTw==}
+    engines: {node: '>=20.16.0'}
+    hasBin: true
+
 snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
@@ -4859,3 +4911,34 @@ snapshots:
   yocto-queue@0.1.0: {}
 
   zod@3.25.76: {}
+  jiti@2.7.0: {}
+
+  nitro@3.0.261029-rc:
+    dependencies:
+      crossws: 0.4.17
+      env-runner: 0.3.11
+      h3: 2.0.8
+      ocache: 0.3.1
+      rou3: 1.0.0
+      srvx: 1.0.8
+
+
+  crossws@0.4.17: {}
+
+  env-runner@0.3.11:
+    dependencies:
+      crossws: 0.4.17
+      srvx: 1.0.8
+
+
+  h3@2.0.8:
+    dependencies:
+      rou3: 1.0.0
+      srvx: 1.0.8
+
+
+  ocache@0.3.1: {}
+
+  rou3@1.0.0: {}
+
+  srvx@1.0.8: {}
