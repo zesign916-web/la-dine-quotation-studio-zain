@@ -10,11 +10,14 @@ const nextCustomerId=()=>{try{const saved=JSON.parse(localStorage.getItem("ladin
 const freshQuote=():Quote=>({date:new Date().toISOString().slice(0,10),valid:"",customerId:nextCustomerId(),name:"",phone:"",guests:0,eventDate:"",venue:"",rows:starter.map(r=>({...r})),terms:defaults.terms,advance:0,discount:0});
 const money=(n:number,currency="PKR")=>`${Math.round(Number(n)||0).toLocaleString("en-US")} ${currency}`;
 const App=()=>{
+ const [loading,setLoading]=useState(true);
+ useEffect(()=>{const timer=window.setTimeout(()=>setLoading(false),4000);return()=>window.clearTimeout(timer)},[]);
  const [quote,setQuote]=useState<Quote>(()=>{try{return JSON.parse(localStorage.getItem("ladine_quote")||"null")||freshQuote()}catch{return freshQuote()}});
  const [settings,setSettings]=useState(()=>{try{const stored=JSON.parse(localStorage.getItem("ladine_settings")||"{}");return{...defaults,...stored,phone:stored.phone==="0370-7378083, 0339-7357430"?defaults.phone:(stored.phone||defaults.phone),company:stored.company==="La Dine and Decors by Z&D Inc."?defaults.company:(stored.company||defaults.company)}}catch{return defaults}});
  const [quotes,setQuotes]=useState<Quote[]>(()=>{try{return JSON.parse(localStorage.getItem("ladine_quotes")||"[]")}catch{return[]}});
  const [tab,setTab]=useState("Quotation");const [saved,setSaved]=useState(true);const [mobilePreview,setMobilePreview]=useState(false);
  useEffect(()=>{localStorage.setItem("ladine_quote",JSON.stringify(quote));setSaved(true)},[quote]);useEffect(()=>localStorage.setItem("ladine_settings",JSON.stringify(settings)),[settings]);useEffect(()=>localStorage.setItem("ladine_quotes",JSON.stringify(quotes)),[quotes]);
+ if(loading)return <div className="brand-preloader"><div className="preloader-inner"><span className="preloader-rule"/><h1>La Dine <em>&</em> Decor</h1><p>QUOTATION STUDIO · LAHORE</p><span className="preloader-progress"><i/></span></div></div>;
  const subtotal=useMemo(()=>quote.rows.reduce((a,r)=>a+(r.category?0:(Number(r.qty)||0)*(Number(r.rate)||0)),0),[quote.rows]);const discount=Number(quote.discount)||0;const taxable=Math.max(0,subtotal-discount);const gstBase=settings.gstMethod==="subtotal"?subtotal:taxable;const gst=gstBase*Number(settings.gst||0)/100;const wht=taxable*Number(settings.wht||0)/100;const total=taxable+gst+(settings.whtMethod==="add"?wht:settings.whtMethod==="deduct"?-wht:0);const balance=total-Number(quote.advance||0);
  const patch=(key:keyof Quote,value:unknown)=>setQuote(q=>({...q,[key]:value}));const updateRow=(id:string,key:keyof Row,value:unknown)=>setQuote(q=>({...q,rows:q.rows.map(r=>r.id===id?{...r,[key]:value}:r)}));
  const saveQuote=()=>{setQuotes(old=>[quote,...old.filter(q=>q.customerId!==quote.customerId)]);toast.success("Quotation saved on this device")};const newQuote=()=>{setQuote(freshQuote());setMobilePreview(false);setTab("Quotation")};const print=()=>{saveQuote();window.print()};
