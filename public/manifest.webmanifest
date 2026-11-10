@@ -1,13 +1,13 @@
 {
-  "name": "La Dine & Decor — Quotation Studio",
-  "short_name": "La Dine Quotes",
-  "description": "Create and manage La Dine & Decor event quotations.",
+  "name": "Dine & Decors — Invoice Studio",
+  "short_name": "Dine & Decors",
+  "description": "Create and manage Dine & Decors event invoices.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait-primary",
-  "background_color": "#f6f4ef",
-  "theme_color": "#3B4F86",
+  "background_color": "#1B305D",
+  "theme_color": "#1B305D",
   "icons": [
     { "src": "/app-icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
   ]
