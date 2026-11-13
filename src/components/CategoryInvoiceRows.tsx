@@ -1,3 +1,5 @@
+import "./CategoryInvoiceRows.css";
+
 type Row = { id: string; category: boolean; description: string; qty: number; rate: number };
 type Props = { rows: Row[]; currency: string };
 const money = (value: number, currency: string) => `${Math.round(Number(value) || 0).toLocaleString("en-US")} ${currency}`;
